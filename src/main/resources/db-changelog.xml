@@ -1,0 +1,47 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="2013-05-01_01" author="snorochevskiy">
+        <createTable tableName="USER_ROLES">
+            <column name="ID" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(50)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DESCRIPTION" type="varchar(1024)"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2013-05-01_02" author="snorochevskiy">
+        <createSequence sequenceName="USERS_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+    <changeSet id="2013-05-01_03" author="snorochevskiy">
+        <createTable tableName="USERS">
+            <column name="ID" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="EMAIL" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_NAME" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="PHONE" type="varchar(15)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="USER_ROLE" type="varchar(50)">
+                <constraints nullable="false" foreignKeyName="FK_USER_ROLE" references="USER_ROLES(NAME)" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
