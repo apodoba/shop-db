@@ -53,7 +53,7 @@
                 <constraints nullable="false" unique="true" />
             </column>
             <column name="DESCRIPTION" type="varchar(1024)"></column>
-	    <column name="PARENT_CATEGORY" type="integer">
+	    <column name="PARENT_CATEGORY_ID" type="integer">
                 <constraints nullable="true" foreignKeyName="FK_PARENT_CATEGORY" references="CATEGORIES(ID)" />
             </column>
         </createTable>
@@ -74,13 +74,13 @@
     		<constraints nullable="false" />
             </column>
 	    <column name="IMAGE" type="blob"></column>
-	    <column name="COUNT" type="integer">
+	    <column name="QUANTITY" type="integer">
     		<constraints nullable="false" />
             </column>	
 	    <column name="MANUFACTURER" type="varchar(50)">
                 <constraints nullable="false" />
             </column>	
-	    <column name="CATEGORY" type="integer">
+	    <column name="CATEGORY_ID" type="integer">
                 <constraints nullable="false" foreignKeyName="FK_CATEGORY" references="CATEGORIES(ID)" />
             </column>
         </createTable>
@@ -88,10 +88,13 @@
    
     <changeSet id="2013-05-01_05" author="apodoba">
         <createTable tableName="CART">
+            <column name="ID" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
             <column name="USER_ID" type="integer">
                 <constraints nullable="false" foreignKeyName="FK_USER" references="USERS(ID)" />
             </column>
-	    <column name="GOODS" type="integer">
+	    <column name="GOODS_ID" type="integer">
                 <constraints nullable="false" foreignKeyName="FK_GOODS" references="GOODS(ID)" />
             </column>
 	    <column name="COUNT" type="integer">
@@ -106,16 +109,19 @@
 
     <changeSet id="2013-05-01_06" author="apodoba">
         <createTable tableName="COMMENTS">
-	    <column name="GOODS" type="integer">
+            <column name="ID" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+	    <column name="GOODS_ID" type="integer">
                 <constraints nullable="false" foreignKeyName="FK_GOODS_ID" references="GOODS(ID)" />
             </column>
 	    <column name="USER_NAME" type="varchar(50)">
                 <constraints nullable="false" />
             </column>	
-	    <column name="DESCRIPTION" type="varchar(1024)">
+	    <column name="COMMENT_TEXT" type="varchar(2048)">
 		<constraints nullable="false" />
 	    </column>
-	    <column name="DATE" type="date">
+	    <column name="DATE_POSTED" type="date">
 		<constraints nullable="false" />
 	    </column>
         </createTable>

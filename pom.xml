@@ -8,7 +8,14 @@
   <name>shop-db</name>
   <url>http://maven.apache.org</url>
 
+  <properties>
+    <database.name>database</database.name>
+    <derby.version>10.9.1.0</derby.version>
+  </properties>
+
   <!-- mvn liquibase:update -->
+  <!-- mvn sql:execute -->
+
   <build>
     <plugins>
       <plugin>
@@ -18,7 +25,7 @@
         <configuration>
           <changeLogFile>src/main/resources/db-changelog.xml</changeLogFile>
           <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
-          <url>jdbc:derby:database;create=true</url>
+          <url>jdbc:derby:${database.name};create=true</url>
           <username>SHOP</username>
           <password></password>
         </configuration>
@@ -26,10 +33,93 @@
           <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.9.1.0</version>
+            <version>${derby.version}</version>
           </dependency>
         </dependencies>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sql-maven-plugin</artifactId>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>${derby.version}</version>
+          </dependency>
+        </dependencies>
+
+        <configuration>
+          <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+          <url>jdbc:derby:${database.name};create=false</url>
+          <username>SHOP</username>
+          <password></password>
+          <skip>${maven.test.skip}</skip>
+        </configuration>
+
+        <executions>
+
+          <!--  It creates integration test data before running the tests -->
+          <execution>
+            <id>create-integration-test-data</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <orderFile>ascending</orderFile>
+              <fileset>
+                <basedir>${basedir}/src/test/resources/sql</basedir>
+                <includes>
+                  <!--<include>init.sql</include>-->
+                </includes>
+              </fileset>
+            </configuration>
+          </execution>
+
+          <!--  It drops data after executing tests -->
+          <execution>
+            <id>drop-db-after-test</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <orderFile>ascending</orderFile>
+              <fileset>
+                <basedir>${basedir}/src/test/resources/sql</basedir>
+                <includes>
+                  <!--<include>drop-int-test-data.sql</include>-->
+                </includes>
+              </fileset>
+            </configuration>
+          </execution>
+                   
+          <execution>
+            <id>default-cli</id>
+            <configuration>
+              <autocommit>true</autocommit>
+              <orderFile>ascending</orderFile>
+              <fileset>
+                <basedir>${basedir}/src/test/resources/sql</basedir>
+                <includes>
+                  <include>1-clear_tables.sql</include>
+                  <include>2-user_roles.sql</include>
+                  <include>3-users.sql</include>
+                  <include>4-categories.sql</include>
+                  <include>5-goods.sql</include>
+                  <include>6-comments.sql</include>
+                  <include>7-cart.sql</include>
+                </includes>
+              </fileset>
+            </configuration>
+          </execution>
+
+        </executions>
+               
+      </plugin>
+
     </plugins>
   </build>
 
