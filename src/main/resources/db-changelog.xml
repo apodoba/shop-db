@@ -2,7 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet id="2013-05-01_01" author="snorochevskiy">
+    <changeSet id="2013-05-01_01" author="apodoba">
         <createTable tableName="USER_ROLES">
             <column name="ID" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
@@ -14,7 +14,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2013-05-01_02" author="snorochevskiy">
+    <changeSet id="2013-05-01_02" author="apodoba">
         <createSequence sequenceName="USERS_SEQ" startValue="1000" incrementBy="1" />
     </changeSet>
 
@@ -44,7 +44,11 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2013-05-01_03" author="apodoba">
+    <changeSet id="2013-05-01_04" author="apodoba">
+        <createSequence sequenceName="CATEGORIES_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+    <changeSet id="2013-05-01_05" author="apodoba">
         <createTable tableName="CATEGORIES">
             <column name="ID" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
@@ -59,7 +63,11 @@
         </createTable>
     </changeSet>
   
-   <changeSet id="2013-05-01_04" author="apodoba">
+    <changeSet id="2013-05-01_06" author="apodoba">
+        <createSequence sequenceName="GOODS_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+   <changeSet id="2013-05-01_07" author="apodoba">
         <createTable tableName="GOODS">
             <column name="ID" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
@@ -86,7 +94,11 @@
         </createTable>
     </changeSet>
    
-    <changeSet id="2013-05-01_05" author="apodoba">
+    <changeSet id="2013-05-01_08" author="apodoba">
+        <createSequence sequenceName="CART_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+    <changeSet id="2013-05-01_09" author="apodoba">
         <createTable tableName="CART">
             <column name="ID" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
@@ -107,7 +119,11 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2013-05-01_06" author="apodoba">
+    <changeSet id="2013-05-01_10" author="apodoba">
+        <createSequence sequenceName="COMMENTS_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+    <changeSet id="2013-05-01_11" author="apodoba">
         <createTable tableName="COMMENTS">
             <column name="ID" type="integer">
                 <constraints primaryKey="true" nullable="false"/>

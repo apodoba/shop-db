@@ -61,40 +61,40 @@
         <executions>
 
           <!--  It creates integration test data before running the tests -->
-          <execution>
-            <id>create-integration-test-data</id>
-            <phase>process-test-resources</phase>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <configuration>
-              <orderFile>ascending</orderFile>
-              <fileset>
-                <basedir>${basedir}/src/test/resources/sql</basedir>
-                <includes>
-                  <!--<include>init.sql</include>-->
-                </includes>
-              </fileset>
-            </configuration>
-          </execution>
+<!--           <execution> -->
+<!--             <id>create-integration-test-data</id> -->
+<!--             <phase>process-test-resources</phase> -->
+<!--             <goals> -->
+<!--               <goal>execute</goal> -->
+<!--             </goals> -->
+<!--             <configuration> -->
+<!--               <orderFile>ascending</orderFile> -->
+<!--               <fileset> -->
+<!--                 <basedir>${basedir}/src/test/resources/sql</basedir> -->
+<!--                 <includes> -->
+<!--                   <include>init.sql</include> -->
+<!--                 </includes> -->
+<!--               </fileset> -->
+<!--             </configuration> -->
+<!--           </execution> -->
 
           <!--  It drops data after executing tests -->
-          <execution>
-            <id>drop-db-after-test</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <configuration>
-              <orderFile>ascending</orderFile>
-              <fileset>
-                <basedir>${basedir}/src/test/resources/sql</basedir>
-                <includes>
-                  <!--<include>drop-int-test-data.sql</include>-->
-                </includes>
-              </fileset>
-            </configuration>
-          </execution>
+<!--           <execution> -->
+<!--             <id>drop-db-after-test</id> -->
+<!--             <phase>post-integration-test</phase> -->
+<!--             <goals> -->
+<!--               <goal>execute</goal> -->
+<!--             </goals> -->
+<!--             <configuration> -->
+<!--               <orderFile>ascending</orderFile> -->
+<!--               <fileset> -->
+<!--                 <basedir>${basedir}/src/test/resources/sql</basedir> -->
+<!--                 <includes> -->
+<!--                   <include>drop-int-test-data.sql</include> -->
+<!--                 </includes> -->
+<!--               </fileset> -->
+<!--             </configuration> -->
+<!--           </execution> -->
                    
           <execution>
             <id>default-cli</id>
@@ -130,6 +130,25 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>4.2.0.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>${derby.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
+
   </dependencies>
 
 </project>
