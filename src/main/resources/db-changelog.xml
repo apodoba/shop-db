@@ -75,13 +75,12 @@
             <column name="NAME" type="varchar(50)">
                 <constraints nullable="false" />
             </column>
-	    <column name="PRICE" type="double">
+	    <column name="PRICE" type="decimal(10,2)">
                 <constraints nullable="false" />
             </column>
             <column name="DESCRIPTION" type="varchar(1024)">
     		<constraints nullable="false" />
             </column>
-	    <column name="IMAGE" type="blob"></column>
 	    <column name="QUANTITY" type="integer">
     		<constraints nullable="false" />
             </column>	
@@ -109,7 +108,7 @@
 	    <column name="GOODS_ID" type="integer">
                 <constraints nullable="false" foreignKeyName="FK_GOODS" references="GOODS(ID)" />
             </column>
-	    <column name="COUNT" type="integer">
+	    <column name="QUANTITY" type="integer">
     		<constraints nullable="false" />
             </column>	
 	    <column name="ADDRESS" type="varchar(1024)">
@@ -129,7 +128,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 	    <column name="GOODS_ID" type="integer">
-                <constraints nullable="false" foreignKeyName="FK_GOODS_ID" references="GOODS(ID)" />
+                <constraints nullable="false" foreignKeyName="FK_GOODS_COMMENT" references="GOODS(ID)" />
             </column>
 	    <column name="USER_NAME" type="varchar(50)">
                 <constraints nullable="false" />
@@ -140,6 +139,22 @@
 	    <column name="DATE_POSTED" type="date">
 		<constraints nullable="false" />
 	    </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2013-05-02_12" author="apodoba">
+        <createSequence sequenceName="IMAGES_SEQ" startValue="1000" incrementBy="1" />
+    </changeSet>
+
+    <changeSet id="2013-05-02_13" author="apodoba">
+        <createTable tableName="IMAGES">
+            <column name="ID" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+	    <column name="IMAGE" type="blob"></column>
+	    <column name="GOODS_ID" type="integer">
+                <constraints nullable="false" foreignKeyName="FK_GOODS_IMAGE" references="GOODS(ID)" />
+            </column>
         </createTable>
     </changeSet>
    

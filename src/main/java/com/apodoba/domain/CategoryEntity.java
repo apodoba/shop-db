@@ -1,12 +1,16 @@
 package com.apodoba.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -39,6 +43,9 @@ public class CategoryEntity implements Serializable{
 	
 	@Column(name="PARENT_CATEGORY_ID")
 	private CategoryEntity category;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+	private Set<GoodsEntity> goods = new HashSet<GoodsEntity>();
 
 	public Long getId() {
 		return id;
@@ -70,8 +77,16 @@ public class CategoryEntity implements Serializable{
 
 	public void setCategory(CategoryEntity category) {
 		this.category = category;
-	}
+	}	
 	
+	public Set<GoodsEntity> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Set<GoodsEntity> goods) {
+		this.goods = goods;
+	}
+
 	@Override
 	public boolean equals(Object other) {
 		if(other == null){

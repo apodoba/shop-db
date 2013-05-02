@@ -14,7 +14,12 @@
     <property name="hibernate.connection.password"></property>
     <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
 
-    <mapping class="com.apodoba.domain.UserEntity" />
+	<mapping class="com.apodoba.domain.UserEntity" />
+	<mapping class="com.apodoba.domain.CategoryEntity" />
+	<mapping class="com.apodoba.domain.GoodsEntity" />
+ 	<mapping class="com.apodoba.domain.CartEntity" />
+	<mapping class="com.apodoba.domain.CommentEntity" />
+	<mapping class="com.apodoba.domain.ImageEntity" /> 
 
   </session-factory>
 </hibernate-configuration>
