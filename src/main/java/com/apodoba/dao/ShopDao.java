@@ -11,4 +11,5 @@ public interface ShopDao {
      * @return
      */
     List<UserEntity> getAllUsers();
+    UserEntity getUserByEmail(String email);
 }

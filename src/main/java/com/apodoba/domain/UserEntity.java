@@ -125,6 +125,9 @@ public class UserEntity implements Serializable {
         if (other == null) {
             return false;
         }
+        if (this == other) {
+        	return true;
+        }
         if (other instanceof UserEntity) {
             UserEntity otherUser = (UserEntity) other;
             return new EqualsBuilder().
