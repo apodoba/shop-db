@@ -42,7 +42,7 @@ public class CategoryEntity implements Serializable{
     private static final long serialVersionUID = 7099088069719953260L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="category_seq_gen")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="category_seq_gen")
     @SequenceGenerator(name="category_seq_gen", sequenceName="CATEGORIES_SEQ")
     @Column(name="ID")
     private Long id;

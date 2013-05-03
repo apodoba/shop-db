@@ -24,7 +24,7 @@ public class CommentEntity implements Serializable {
 	private static final long serialVersionUID = 3610467518227293347L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "comment_seq_gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq_gen")
 	@SequenceGenerator(name = "comment_seq_gen", sequenceName = "COMMENTS_SEQ")
 	@Column(name = "ID")
 	private Long id;

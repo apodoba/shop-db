@@ -26,7 +26,20 @@ public class ShopDaoImplTest extends AbstractDaoTest {
 
     @Test
     public void testPersistCategoty() {
+        ShopDao shopDao = new ShopDaoImpl(getCurrentSession());
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setName("Test name");
+        categoryEntity.setDescription("");
+        shopDao.saveOrUpdate(categoryEntity);
+        Long assignedId = categoryEntity.getId();
 
+        getCurrentSession().flush();
+        getCurrentSession().clear();
+
+        categoryEntity = shopDao.getCategoryById(assignedId);
+        Assert.assertNotNull(categoryEntity);
+        Assert.assertEquals(assignedId, categoryEntity.getId());
+        Assert.assertEquals("Test name", categoryEntity.getName());
     }
 
     @Test

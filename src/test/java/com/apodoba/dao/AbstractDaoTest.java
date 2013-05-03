@@ -20,22 +20,23 @@ public class AbstractDaoTest {
     public static void beforeClass() {
         HibernateUtil.init();
         sessionFactory = HibernateUtil.getSessionFactory();
-        session = sessionFactory.openSession();
     }
 
     @Before
     public void before() {
+    	session = sessionFactory.openSession();
         tx = session.beginTransaction();
     }
 
     @After
     public void after() {
         tx.rollback();
+        session.clear();
+        session.close();
     }
 
     @AfterClass
     public static void afterClass() {
-        session.close();
         sessionFactory.close();
     }
 

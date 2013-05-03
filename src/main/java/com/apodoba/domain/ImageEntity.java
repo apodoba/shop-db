@@ -23,7 +23,7 @@ public class ImageEntity implements Serializable {
 	private static final long serialVersionUID = -985971366929729996L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "image_seq_gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_seq_gen")
 	@SequenceGenerator(name = "image_seq_gen", sequenceName = "IMAGES_SEQ")
 	@Column(name = "ID")
 	private Long id;

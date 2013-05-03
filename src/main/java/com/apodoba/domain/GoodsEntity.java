@@ -28,7 +28,7 @@ public class GoodsEntity implements Serializable {
 	private static final long serialVersionUID = 2270726919362215659L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "goods_seq_gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "goods_seq_gen")
 	@SequenceGenerator(name = "goods_seq_gen", sequenceName = "GOODS_SEQ")
 	@Column(name = "ID")
 	private Long id;

@@ -23,7 +23,7 @@ public class CartEntity implements Serializable{
 	private static final long serialVersionUID = 7277249512413402291L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="cart_seq_gen")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cart_seq_gen")
 	@SequenceGenerator(name="cart_seq_gen", sequenceName="CART_SEQ")
 	@Column(name="ID")
 	private Long id;

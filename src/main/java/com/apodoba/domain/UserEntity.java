@@ -32,7 +32,7 @@ public class UserEntity implements Serializable {
 	private static final long serialVersionUID = -706633649280169680L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "usr_seq_gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usr_seq_gen")
 	@SequenceGenerator(name = "usr_seq_gen", sequenceName = "USERS_SEQ")
 	@Column(name = "ID")
 	private Long id;
