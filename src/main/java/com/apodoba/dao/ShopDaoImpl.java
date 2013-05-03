@@ -2,6 +2,7 @@ package com.apodoba.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -63,8 +64,11 @@ public class ShopDaoImpl implements ShopDao {
         return (UserEntity) session.createCriteria(UserEntity.class).add(Restrictions.eq("email", email)).uniqueResult();
     }
 
-    public List<CategoryEntity> getCategoriesWithParent() {
-        return null;
+    @SuppressWarnings("unchecked")
+	public List<CategoryEntity> getCategoriesWithParent(Long parentCategotyId) {
+        Query query = session.getNamedQuery(CategoryEntity.CATEGORIES_WITH_PARENT);
+        query.setParameter("categoryId", parentCategotyId);
+        return query.list();
     }
 
 }

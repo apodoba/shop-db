@@ -39,12 +39,19 @@ public class ShopDaoImplTest extends AbstractDaoTest {
     
     @Test
     public void testGetUserByEmail() {
-    	String email = "admin@shop.com";
-    	Long id = 1L;
+        String email = "admin@shop.com";
+        Long id = 1L;
         ShopDao shopDao = new ShopDaoImpl(getCurrentSession());
         UserEntity entity = shopDao.getUserByEmail(email);
         Assert.assertNotNull(entity);    
         Assert.assertEquals(id, entity.getId());
     }
 
+    @Test
+    public void testGetCategoriesWithParent() {
+        ShopDao shopDao = new ShopDaoImpl(getCurrentSession());
+        List<CategoryEntity> childCategories = shopDao.getCategoriesWithParent(1L);
+        Assert.assertNotNull(childCategories);
+        Assert.assertTrue("Shoul retriev at least one category", childCategories.size() > 0);
+    }
 }

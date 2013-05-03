@@ -32,7 +32,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Table(name = "CATEGORIES")
 @NamedQueries({
     @NamedQuery(name=CategoryEntity.CATEGORIES_WITH_PARENT,
-                query="from CategoryEntity c where parentCategory = :category")
+                query="from CategoryEntity c where parentCategory.id = :categoryId")
 })
 public class CategoryEntity implements Serializable{
 
