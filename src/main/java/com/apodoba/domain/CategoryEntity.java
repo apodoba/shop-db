@@ -113,7 +113,7 @@ public class CategoryEntity implements Serializable{
             return new EqualsBuilder().
                     append(this.name, otherCategory.name).
                     append(this.description, otherCategory.description).
-                    append(this.parentCategory, otherCategory.parentCategory).
+                   /* append(this.parentCategory.name, otherCategory.parentCategory.name).*/
                     isEquals();
         }
         return false;
@@ -124,7 +124,7 @@ public class CategoryEntity implements Serializable{
         return new HashCodeBuilder().
                 append(this.name).
                 append(this.description).
-                append(this.parentCategory).
+                /*append(this.parentCategory.name).*/
                 hashCode();
     }
     

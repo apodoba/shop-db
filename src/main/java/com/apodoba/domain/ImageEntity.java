@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name = "IMAGE")
+@Table(name = "IMAGES")
 public class ImageEntity implements Serializable {
 
 	private static final long serialVersionUID = -985971366929729996L;
@@ -29,6 +30,7 @@ public class ImageEntity implements Serializable {
 	private Long id;
 
 	@Column(name = "IMAGE")
+	@Lob
 	private byte[] image;
 
 	@OneToOne(fetch = FetchType.LAZY)

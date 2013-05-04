@@ -30,7 +30,7 @@ public class CommentEntity implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FK_GOODS_COMMENT", nullable = false)
+	@JoinColumn(name = "GOODS_ID", nullable = false)
 	private GoodsEntity goods;
 
 	@Column(name = "USER_NAME")

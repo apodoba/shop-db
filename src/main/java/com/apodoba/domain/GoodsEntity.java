@@ -49,7 +49,7 @@ public class GoodsEntity implements Serializable {
 	private String manufacturer;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PARENT_CATEGORY_ID", nullable = false)
+	@JoinColumn(name = "CATEGORY_ID", nullable = false)
 	private CategoryEntity category;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "goods")

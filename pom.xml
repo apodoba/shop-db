@@ -111,6 +111,7 @@
                   <include>5-goods.sql</include>
                   <include>6-comments.sql</include>
                   <include>7-cart.sql</include>
+		  		  <include>8-images.sql</include>
                 </includes>
               </fileset>
             </configuration>
