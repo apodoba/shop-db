@@ -14,7 +14,7 @@ import com.apodoba.domain.ImageEntity;
 import com.apodoba.domain.UserEntity;
 
 public class ShopDaoImpl implements ShopDao {
-
+	
 	private Session session;
 
 	public ShopDaoImpl(Session session) {
@@ -36,11 +36,11 @@ public class ShopDaoImpl implements ShopDao {
 	public ImageEntity getImageById(Long id) {
 		return (ImageEntity) session.get(ImageEntity.class, id);
 	}
-	
+
 	public CartEntity getCartById(Long id) {
 		return (CartEntity) session.get(CartEntity.class, id);
 	}
-	
+
 	public CommentEntity getCommentById(Long id) {
 		return (CommentEntity) session.get(CommentEntity.class, id);
 	}
@@ -62,15 +62,15 @@ public class ShopDaoImpl implements ShopDao {
 		session.saveOrUpdate(image);
 
 	}
-	
+
 	public void saveOrUpdate(CartEntity cart) {
 		session.saveOrUpdate(cart);
-		
+
 	}
-	
+
 	public void saveOrUpdate(CommentEntity comment) {
 		session.saveOrUpdate(comment);
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -90,4 +90,11 @@ public class ShopDaoImpl implements ShopDao {
 		query.setParameter("categoryId", parentCategotyId);
 		return query.list();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<CategoryEntity> getCategoriesWithoutParent() {
+		return session.createCriteria(CategoryEntity.class)
+				.add(Restrictions.isNull("parentCategory")).list();
+	}
+
 }

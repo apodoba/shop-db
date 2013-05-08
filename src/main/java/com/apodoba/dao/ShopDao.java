@@ -10,7 +10,7 @@ import com.apodoba.domain.ImageEntity;
 import com.apodoba.domain.UserEntity;
 
 public interface ShopDao {
-
+	
     CategoryEntity getCategoryById(Long id);
     GoodsEntity getGoodsById(Long id);
     UserEntity getUserById(Long id);
@@ -28,9 +28,8 @@ public interface ShopDao {
      * 
      * @return
      */
-    List<UserEntity> getAllUsers();
-    
+    List<UserEntity> getAllUsers();    
     UserEntity getUserByEmail(String email);
-
     List<CategoryEntity> getCategoriesWithParent(Long parentCategotyId);
+    List<CategoryEntity> getCategoriesWithoutParent();
 }
