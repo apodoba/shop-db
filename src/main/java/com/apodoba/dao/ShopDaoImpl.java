@@ -97,4 +97,9 @@ public class ShopDaoImpl implements ShopDao {
 				.add(Restrictions.isNull("parentCategory")).list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<CategoryEntity> getAllCategories() {
+		return session.createCriteria(CategoryEntity.class).list();
+	}
+
 }

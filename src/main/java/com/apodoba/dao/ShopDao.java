@@ -32,4 +32,5 @@ public interface ShopDao {
     UserEntity getUserByEmail(String email);
     List<CategoryEntity> getCategoriesWithParent(Long parentCategotyId);
     List<CategoryEntity> getCategoriesWithoutParent();
+    List<CategoryEntity> getAllCategories();
 }
